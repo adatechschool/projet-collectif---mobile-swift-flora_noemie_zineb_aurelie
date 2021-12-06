@@ -28,14 +28,29 @@ struct ContentView: View {
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .foregroundColor(Color(hue: 1.0, saturation: 0.068, brightness: 0.516))
-        
             }
         }
-                
-        
+       
+        NavigationView {
+            List(spots) { spot in
+                VStack{
+                    HStack{
+                        Image(spot.flag)
+                            .resizable()
+                            .frame(width: 25, height: 20)
+                        Text(spot.name + " - " + spot.country)
+                        
+                   
+                    }
+            }
+                }
+            }
+            .navigationTitle("Spots")
+            
+        }
     }
-    
-}
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
