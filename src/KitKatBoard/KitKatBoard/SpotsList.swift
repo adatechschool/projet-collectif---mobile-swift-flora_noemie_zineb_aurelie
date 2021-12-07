@@ -27,19 +27,19 @@ var spots = [
 
 ]
 
-var body: some View {
-    
-    NavigationView {
-        List(spots) { spot in
-            VStack{
-                Text(spot.name)
-                Text(spot.country)
-        }
-        }
-        .navigationTitle("Spots")
-        .toolbar { EditButton() }
-    }
+//var body: some View {
+//
+//    NavigationView {
+//        List(spots) { spot in
+//            VStack{
+//                Text(spot.name)
+//                Text(spot.country)
+//        }
+//        }
+//        .navigationTitle("Spots")
+//        .toolbar { EditButton() }
+//    }
    
-}
+//}
 
 

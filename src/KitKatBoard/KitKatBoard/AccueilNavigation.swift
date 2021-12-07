@@ -13,7 +13,7 @@ struct AccueilNavigation: View {
         List{
             ForEach (spots){ spot in
                 NavigationLink {
-                    DetailView()
+                    DetailViewLink(spot:spot)
                 } label: {
                     VStack{
                         HStack{
@@ -28,7 +28,7 @@ struct AccueilNavigation: View {
 
                 }
             }
-            .navigationTitle("Best spots in univerzse Earth")
+            .navigationTitle("Best spots in Universe")
             
     }
 }
