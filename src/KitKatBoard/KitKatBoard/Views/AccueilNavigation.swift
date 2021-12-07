@@ -11,16 +11,13 @@ struct AccueilNavigation: View {
     var body: some View {
         NavigationView{
         List{
-            ForEach (spots){ spot in
+            ForEach (spots.records){ spot in
                 NavigationLink {
                     DetailViewLink(spot:spot)
                 } label: {
                     VStack{
                         HStack{
-                            Image(spot.flag)
-                                .resizable()
-                                .frame(width: 25, height: 20)
-                            Text(spot.name + " - " + spot.country)
+                            Text(spot.address + " - " + spot.surfBreak)
                         }
                     }
                 }

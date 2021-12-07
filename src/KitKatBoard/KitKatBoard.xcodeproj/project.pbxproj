@@ -8,16 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		E5A77891275E4948008A97F7 /* KitKatBoardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A77890275E4948008A97F7 /* KitKatBoardApp.swift */; };
-		E5A77893275E4948008A97F7 /* StructureBaseDeatil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A77892275E4948008A97F7 /* StructureBaseDeatil.swift */; };
+		E5A77893275E4948008A97F7 /* DetailViewHard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A77892275E4948008A97F7 /* DetailViewHard.swift */; };
 		E5A77895275E494A008A97F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A77894275E494A008A97F7 /* Assets.xcassets */; };
 		E5A77898275E494A008A97F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A77897275E494A008A97F7 /* Preview Assets.xcassets */; };
 		E5A778A2275E494A008A97F7 /* KitKatBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778A1275E494A008A97F7 /* KitKatBoardTests.swift */; };
 		E5A778AC275E494A008A97F7 /* KitKatBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778AB275E494A008A97F7 /* KitKatBoardUITests.swift */; };
 		E5A778AE275E494A008A97F7 /* KitKatBoardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778AD275E494A008A97F7 /* KitKatBoardUITestsLaunchTests.swift */; };
-		E5A778BB275E4EE6008A97F7 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778BA275E4EE6008A97F7 /* Wave.swift */; };
 		E5A778BF275E5BA9008A97F7 /* SpotsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778BE275E5BA9008A97F7 /* SpotsList.swift */; };
 		E5A778C3275F5A5D008A97F7 /* AccueilNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778C2275F5A5D008A97F7 /* AccueilNavigation.swift */; };
 		E5A778C5275F635F008A97F7 /* DetailViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778C4275F635F008A97F7 /* DetailViewLink.swift */; };
+		E5A778CE275F7576008A97F7 /* SpotsData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5A778CD275F7576008A97F7 /* SpotsData.json */; };
+		E5A778D0275F7907008A97F7 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778CF275F7907008A97F7 /* ModelData.swift */; };
+		E5A778D2275FB27A008A97F7 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778D1275FB27A008A97F7 /* RemoteImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 /* Begin PBXFileReference section */
 		E5A7788D275E4948008A97F7 /* KitKatBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitKatBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A77890275E4948008A97F7 /* KitKatBoardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitKatBoardApp.swift; sourceTree = "<group>"; };
-		E5A77892275E4948008A97F7 /* StructureBaseDeatil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureBaseDeatil.swift; sourceTree = "<group>"; };
+		E5A77892275E4948008A97F7 /* DetailViewHard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewHard.swift; sourceTree = "<group>"; };
 		E5A77894275E494A008A97F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5A77897275E494A008A97F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E5A7789D275E494A008A97F7 /* KitKatBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KitKatBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,10 +50,12 @@
 		E5A778A7275E494A008A97F7 /* KitKatBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KitKatBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A778AB275E494A008A97F7 /* KitKatBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitKatBoardUITests.swift; sourceTree = "<group>"; };
 		E5A778AD275E494A008A97F7 /* KitKatBoardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitKatBoardUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E5A778BA275E4EE6008A97F7 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		E5A778BE275E5BA9008A97F7 /* SpotsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotsList.swift; sourceTree = "<group>"; };
 		E5A778C2275F5A5D008A97F7 /* AccueilNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccueilNavigation.swift; sourceTree = "<group>"; };
 		E5A778C4275F635F008A97F7 /* DetailViewLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewLink.swift; sourceTree = "<group>"; };
+		E5A778CD275F7576008A97F7 /* SpotsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpotsData.json; sourceTree = "<group>"; };
+		E5A778CF275F7907008A97F7 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		E5A778D1275FB27A008A97F7 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +106,9 @@
 		E5A7788F275E4948008A97F7 /* KitKatBoard */ = {
 			isa = PBXGroup;
 			children = (
+				E5A778CB275F73B1008A97F7 /* Resources */,
+				E5A778CC275F73C5008A97F7 /* Views */,
 				E5A77890275E4948008A97F7 /* KitKatBoardApp.swift */,
-				E5A77892275E4948008A97F7 /* StructureBaseDeatil.swift */,
-				E5A778C4275F635F008A97F7 /* DetailViewLink.swift */,
-				E5A778C2275F5A5D008A97F7 /* AccueilNavigation.swift */,
-				E5A778BA275E4EE6008A97F7 /* Wave.swift */,
-				E5A778BE275E5BA9008A97F7 /* SpotsList.swift */,
 				E5A77894275E494A008A97F7 /* Assets.xcassets */,
 				E5A77896275E494A008A97F7 /* Preview Content */,
 			);
@@ -137,6 +138,27 @@
 				E5A778AD275E494A008A97F7 /* KitKatBoardUITestsLaunchTests.swift */,
 			);
 			path = KitKatBoardUITests;
+			sourceTree = "<group>";
+		};
+		E5A778CB275F73B1008A97F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5A778CD275F7576008A97F7 /* SpotsData.json */,
+				E5A778BE275E5BA9008A97F7 /* SpotsList.swift */,
+				E5A778CF275F7907008A97F7 /* ModelData.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E5A778CC275F73C5008A97F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5A778D1275FB27A008A97F7 /* RemoteImage.swift */,
+				E5A778C4275F635F008A97F7 /* DetailViewLink.swift */,
+				E5A77892275E4948008A97F7 /* DetailViewHard.swift */,
+				E5A778C2275F5A5D008A97F7 /* AccueilNavigation.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +267,7 @@
 			files = (
 				E5A77898275E494A008A97F7 /* Preview Assets.xcassets in Resources */,
 				E5A77895275E494A008A97F7 /* Assets.xcassets in Resources */,
+				E5A778CE275F7576008A97F7 /* SpotsData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,12 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5A778BB275E4EE6008A97F7 /* Wave.swift in Sources */,
 				E5A778C5275F635F008A97F7 /* DetailViewLink.swift in Sources */,
-				E5A77893275E4948008A97F7 /* StructureBaseDeatil.swift in Sources */,
+				E5A77893275E4948008A97F7 /* DetailViewHard.swift in Sources */,
+				E5A778D2275FB27A008A97F7 /* RemoteImage.swift in Sources */,
 				E5A77891275E4948008A97F7 /* KitKatBoardApp.swift in Sources */,
 				E5A778BF275E5BA9008A97F7 /* SpotsList.swift in Sources */,
 				E5A778C3275F5A5D008A97F7 /* AccueilNavigation.swift in Sources */,
+				E5A778D0275F7907008A97F7 /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
