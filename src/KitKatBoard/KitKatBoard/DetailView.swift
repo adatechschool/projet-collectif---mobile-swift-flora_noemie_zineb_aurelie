@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DetailView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 22.0) {
+        VStack {
             Wave()
             Text("Banzai Beach")
                 .font(.largeTitle)
@@ -31,29 +31,13 @@ struct ContentView: View {
             }
         }
        
-        NavigationView {
-            List(spots) { spot in
-                VStack{
-                    HStack{
-                        Image(spot.flag)
-                            .resizable()
-                            .frame(width: 25, height: 20)
-                        Text(spot.name + " - " + spot.country)
-                        
-                   
-                    }
-            }
-                }
-            }
-            .navigationTitle("Spots")
-            
-        }
     }
 
 
 
-struct ContentView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DetailView()
     }
+}
 }
