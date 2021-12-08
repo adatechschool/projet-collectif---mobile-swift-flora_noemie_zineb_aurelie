@@ -16,9 +16,10 @@ struct AccueilNavigation: View {
                     DetailViewLink(spot:spot)
                 } label: {
                     VStack{
-                        HStack{
-                            Text(spot.address + " - " + spot.surfBreak)
-                        }
+                        
+                            Text(spot.fields.address)
+                            Text(spot.fields.surfBreak[0])
+                        
                     }
                 }
 

@@ -15,14 +15,14 @@ struct DetailViewLink: View {
         
         VStack {
              
-            RemoteImage(url: self.spot.photos)
+            RemoteImage(url: self.spot.fields.photos[0].url)
                 
-            Text(spot.address)
+            Text(spot.fields.address)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color(hue: 0.594, saturation: 0.517, brightness: 0.884))
                
-            Text(spot.surfBreak)
+            Text(spot.fields.surfBreak[0])
         }
        
     }
