@@ -19,20 +19,36 @@ struct DetailViewLink: View {
             let beachName: String = "🏝 Beach: " + spot.fields.destination
             let country : String = "🌎 : " + spot.fields.destinationStateCountry
             let wave : String = "🌊 : " + spot.fields.surfBreak.joined(separator: ", ")
-            let placeForMap: String = spot.fields.address
+            let placeForMap: String = spot.fields.destinationStateCountry
             
-            RemoteImage(url: self.spot.fields.photos[0].thumbnails.full.url)
+           
                 
             MapView(addressNav: placeForMap)
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 150)
+            RemoteImage(url: self.spot.fields.photos[0].thumbnails.full.url)
+                .offset(y: -50)
+                .padding(.bottom, -70)
+                .frame(height: 70)
+            
+            VStack{
+                Spacer()
             Text(beachName)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color(hue: 0.594, saturation: 0.517, brightness: 0.884))
+                Spacer()
             Text(country)
+                Spacer()
             Text(wave)
+                Spacer()
             Text(difficultyText)
+            Spacer()
+            
         }
-       
+        .padding()
+        Spacer()
+        }
     }
 
 

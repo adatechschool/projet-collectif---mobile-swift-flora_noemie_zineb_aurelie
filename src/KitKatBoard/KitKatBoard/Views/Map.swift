@@ -21,7 +21,6 @@ func getCoordinate( addressString : String,
                 return
             }
         }
-            
         completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
     }
 }
@@ -35,7 +34,7 @@ struct MapView: View {
                 getCoordinate(addressString:addressNav, completionHandler:{(coordinates, error) in
                     region = MKCoordinateRegion(
                         center: coordinates,
-                             span: MKCoordinateSpan(latitudeDelta: 0.6, longitudeDelta: 0.6)
+                             span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
                     )
                     
                 }
@@ -43,6 +42,7 @@ struct MapView: View {
             }
 }
 }
+
 //struct MapView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MapView(spot:Record)
