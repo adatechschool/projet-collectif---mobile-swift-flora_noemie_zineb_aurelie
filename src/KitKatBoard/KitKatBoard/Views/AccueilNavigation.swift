@@ -8,33 +8,40 @@
 import SwiftUI
 
 struct AccueilNavigation: View {
+    @State var spots : SpotsData = SpotsData(records: [])
+    
     var body: some View {
         NavigationView{
-        List{
-            ForEach (spots.records){ spot in
-                NavigationLink {
-                    DetailViewLink(spot:spot)
-                } label: {
-                    VStack{
-                        
+            List{
+                ForEach (spots.records){ spot in
+                    NavigationLink {
+                        DetailViewLink(spot:spot)
+                    } label: {
+                        VStack{
+                            let surfBreakJoin: String = spot.fields.surfBreak.joined(separator: ", ")
                             Text(spot.fields.address)
-                            Text(spot.fields.surfBreak[0])
-                        
+                            Text(surfBreakJoin)
+                            
+                            
+                        }
                     }
-                }
-
-
+                    
+                    
                 }
             }
             .navigationTitle("Best spots in Universe")
+            .onAppear(){
+                Api().loadData{(records) in spots = records}
+                
+            }
             
+        }
     }
-}
-
-
-struct AccueilNavigation_Previews: PreviewProvider {
-    static var previews: some View {
-        AccueilNavigation()
+    
+    
+    struct AccueilNavigation_Previews: PreviewProvider {
+        static var previews: some View {
+            AccueilNavigation()
+        }
     }
-}
 }

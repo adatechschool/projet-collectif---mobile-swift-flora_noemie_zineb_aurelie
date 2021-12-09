@@ -15,23 +15,24 @@ struct DetailViewLink: View {
         
         VStack {
              
-            RemoteImage(url: self.spot.fields.photos[0].url)
+            RemoteImage(url: self.spot.fields.photos[0].thumbnails.full.url)
                 
             Text(spot.fields.address)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color(hue: 0.594, saturation: 0.517, brightness: 0.884))
                
-            Text(spot.fields.surfBreak[0])
+            Text(spot.fields.surfBreak.joined(separator: ", "))
+            Text(spot.fields.)
         }
        
     }
 
 
-//
+
 //struct DetailView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        DetailViewLink(spot: Record[0])
+//        DetailViewLink()
 //    }
 //}
 }

@@ -6,7 +6,9 @@
 //
 
 import Foundation
-var spots: SpotsData = load("SpotsData.json")
+
+//var spots: SpotsData = SpotsData(records : [])
+
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
