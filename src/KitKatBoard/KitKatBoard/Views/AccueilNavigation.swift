@@ -19,7 +19,7 @@ struct AccueilNavigation: View {
                     } label: {
                         VStack{
                             let surfBreakJoin: String = spot.fields.surfBreak.joined(separator: ", ")
-                            Text(spot.fields.address)
+                            Text(spot.fields.destinationStateCountry)
                             Text(surfBreakJoin)
                             
                             

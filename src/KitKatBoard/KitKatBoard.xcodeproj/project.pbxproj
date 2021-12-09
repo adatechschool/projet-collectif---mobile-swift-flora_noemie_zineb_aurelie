@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E54FB3B72761032800DEF0FE /* SurfDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FB3B62761032800DEF0FE /* SurfDestination.swift */; };
+		E54FB3B9276213F200DEF0FE /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FB3B8276213F200DEF0FE /* Map.swift */; };
 		E5A77891275E4948008A97F7 /* KitKatBoardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A77890275E4948008A97F7 /* KitKatBoardApp.swift */; };
 		E5A77893275E4948008A97F7 /* DetailViewHard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A77892275E4948008A97F7 /* DetailViewHard.swift */; };
 		E5A77895275E494A008A97F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A77894275E494A008A97F7 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		E54FB3B62761032800DEF0FE /* SurfDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfDestination.swift; sourceTree = "<group>"; };
+		E54FB3B8276213F200DEF0FE /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E5A7788D275E4948008A97F7 /* KitKatBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitKatBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A77890275E4948008A97F7 /* KitKatBoardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitKatBoardApp.swift; sourceTree = "<group>"; };
 		E5A77892275E4948008A97F7 /* DetailViewHard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewHard.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				E5A778D1275FB27A008A97F7 /* RemoteImage.swift */,
 				E5A778C4275F635F008A97F7 /* DetailViewLink.swift */,
+				E54FB3B8276213F200DEF0FE /* Map.swift */,
 				E5A77892275E4948008A97F7 /* DetailViewHard.swift */,
 				E5A778C2275F5A5D008A97F7 /* AccueilNavigation.swift */,
 			);
@@ -301,6 +304,7 @@
 				E5A778D2275FB27A008A97F7 /* RemoteImage.swift in Sources */,
 				E5A77891275E4948008A97F7 /* KitKatBoardApp.swift in Sources */,
 				E5A778BF275E5BA9008A97F7 /* SpotsList.swift in Sources */,
+				E54FB3B9276213F200DEF0FE /* Map.swift in Sources */,
 				E5A778C3275F5A5D008A97F7 /* AccueilNavigation.swift in Sources */,
 				E5A778D0275F7907008A97F7 /* ModelData.swift in Sources */,
 			);
