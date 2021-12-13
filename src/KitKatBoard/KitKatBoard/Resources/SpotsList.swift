@@ -48,24 +48,16 @@ struct Fields: Codable,Identifiable {
     let surfBreak: [String]
     let difficultyLevel: Int
     let destination: String
-    let geocode: String
-    //let magicSeaweedLink: String
     let photos: [Photo]
-    //let peakSurfSeasonBegins : String
     let destinationStateCountry : String
-    //let peakSurfSeasonEnds : String
     let address: String
 
     enum CodingKeys: String, CodingKey {
         case surfBreak = "Surf Break"
         case difficultyLevel = "Difficulty Level"
         case destination = "Destination"
-        case geocode = "Geocode"
-        //case magicSeaweedLink = "Magic Seaweed Link"
         case photos = "Photos"
-        //case peakSurfSeasonBegins = "Peak Surf Season Begins"
         case destinationStateCountry = "Destination State/Country"
-        //case peakSurfSeasonEnds = "Peak Surf Season Ends"
         case address = "Address"
     }
 }
