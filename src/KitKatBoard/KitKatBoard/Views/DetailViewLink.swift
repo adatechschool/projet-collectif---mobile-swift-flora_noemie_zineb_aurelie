@@ -19,7 +19,7 @@ struct DetailViewLink: View {
             let beachName: String = "🏝 Beach: " + spot.fields.destination
             let country : String = "🌎 : " + spot.fields.destinationStateCountry
             let wave : String = "🌊 : " + spot.fields.surfBreak.joined(separator: ", ")
-            let placeForMap: String = spot.fields.destinationStateCountry
+            let placeForMap: String = spot.fields.destination
             
            
                 

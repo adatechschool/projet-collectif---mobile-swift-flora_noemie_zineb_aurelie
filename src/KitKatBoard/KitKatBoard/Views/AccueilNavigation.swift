@@ -12,6 +12,7 @@ struct AccueilNavigation: View {
     
     var body: some View {
         NavigationView{
+          
             List{
                 ForEach (spots.records){ spot in
                     NavigationLink {
@@ -21,6 +22,7 @@ struct AccueilNavigation: View {
                             let surfBreakJoin: String = spot.fields.surfBreak.joined(separator: ", ")
                             Text(spot.fields.destinationStateCountry)
                             Text(surfBreakJoin)
+                            
                             
                             
                         }
@@ -34,8 +36,16 @@ struct AccueilNavigation: View {
                 Api().loadData{(records) in spots = records}
                 
             }
+           
+            
+            
             
         }
+        
+             
+        }
+
+        
     }
     
     
@@ -44,4 +54,4 @@ struct AccueilNavigation: View {
             AccueilNavigation()
         }
     }
-}
+
