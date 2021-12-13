@@ -11,7 +11,7 @@ import SwiftUI
 struct KitKatBoardApp: App {
     var body: some Scene {
         WindowGroup {
-            AccueilNavigation()
+            Tabbar()
         }
     }
 }
