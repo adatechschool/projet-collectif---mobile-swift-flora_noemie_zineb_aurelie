@@ -15,7 +15,7 @@ struct DetailViewLink: View {
     
         
         VStack {
-            let difficultyText: String = "😵 Difficulty level: " +  String(spot.fields.difficultyLevel) + "/5"
+            let difficultyText: String = "😵 Difficulty level: " +  String(spot.fields.difficultyLevel!) + "/5"
             let beachName: String = "🏝 Beach: " + spot.fields.destination
             let country : String = "🌎 : " + spot.fields.destinationStateCountry
             let wave : String = "🌊 : " + spot.fields.surfBreak.joined(separator: ", ")

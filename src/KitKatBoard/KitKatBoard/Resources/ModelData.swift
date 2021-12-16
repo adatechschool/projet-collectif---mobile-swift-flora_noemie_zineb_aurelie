@@ -17,8 +17,7 @@ func load<T: Decodable>(_ filename: String) -> T {
     else {
         fatalError("Couldn't find \(filename) in main bundle.")
     }
-    
-
+          
     do {
         data = try Data(contentsOf: file)
     } catch {
