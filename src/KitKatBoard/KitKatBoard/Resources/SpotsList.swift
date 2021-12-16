@@ -14,20 +14,20 @@ struct SpotsData: Codable {
 
 // MARK: - Record
 struct Record: Codable, Identifiable {
-    let id: String
+    let id: String?
     let fields: Fields
 }
 
 // MARK: - Fields
-struct Fields: Codable, Identifiable {
-    var id: UUID=UUID()
+struct Fields: Codable {
+   // var id: UUID=UUID()
     
     let surfBreak: [String]
     let difficultyLevel: Int?
     let destination: String
     let photos: [Photo]
     let destinationStateCountry : String
-    let address: String
+//    let address: String
 
     enum CodingKeys: String, CodingKey {
         case surfBreak = "Surf Break"
@@ -35,7 +35,7 @@ struct Fields: Codable, Identifiable {
         case destination = "Destination"
         case photos = "Photos"
         case destinationStateCountry = "Destination State/Country"
-        case address = "Address"
+//        case address = "Address"
     }
 }
 
@@ -43,19 +43,19 @@ struct Fields: Codable, Identifiable {
 struct Photo: Codable {
     //var id: String?
     let url: String
-    let thumbnails: Thumbnails
+//    let thumbnails: Thumbnails
 }
 
-//// MARK: - Thumbnails
-struct Thumbnails: Codable {
-    let small, large, full: Resolution
-}
-
-// MARK: - Full
-struct Resolution: Codable {
-    let url: String
-    let width, height: Int
-}
+////// MARK: - Thumbnails
+//struct Thumbnails: Codable {
+//    let small, large, full: Resolution
+//}
+//
+//// MARK: - Full
+//struct Resolution: Codable {
+//    let url: String
+//    let width, height: Int
+//}
 
 
 

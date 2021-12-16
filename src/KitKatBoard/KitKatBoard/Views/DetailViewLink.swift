@@ -26,7 +26,7 @@ struct DetailViewLink: View {
             MapView(addressNav: placeForMap)
                 .ignoresSafeArea(edges: .top)
                 .frame(height: 150)
-            RemoteImage(url: self.spot.fields.photos[0].thumbnails.full.url)
+            RemoteImage(url: self.spot.fields.photos[0].url)
                 .offset(y: -50)
                 .padding(.bottom, -70)
                 .frame(height: 70)
