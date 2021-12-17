@@ -26,10 +26,7 @@ struct PictureView: View {
                         .resizable()
                         .frame(width:150, height:150)
                         .scaledToFit()
-                
                 }
-                
-                
             }
             .onTapGesture {
                 showingImagePicker=true
@@ -48,7 +45,7 @@ struct PictureView: View {
     func loadImage(){
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
-
+      
     }
     func save(){
         
