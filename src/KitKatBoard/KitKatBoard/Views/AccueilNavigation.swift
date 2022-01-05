@@ -21,10 +21,9 @@ struct AccueilNavigation: View {
                         VStack{
                             let surfBreakJoin: String = spot.fields.surfBreak.joined(separator: ", ")
                             Text(spot.fields.destinationStateCountry)
+                                .padding(.all, 0.0 )
                             Text(surfBreakJoin)
-                            
-                            
-                            
+                                .padding([.leading, .bottom, .trailing], 0.0)
                         }
                     }
                     

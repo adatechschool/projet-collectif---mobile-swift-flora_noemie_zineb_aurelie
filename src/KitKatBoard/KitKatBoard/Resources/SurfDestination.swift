@@ -11,7 +11,7 @@ class Api : ObservableObject{
     //@Published var record : SpotsData = SpotsData(records:[])
     
     func loadData(completion:@escaping (SpotsData) -> ()) {
-        guard let url = URL(string: "https://api.airtable.com/v0/appxT9ln6ixuCb3o1/Surf%20Destinations?api_key=key0U8yesePbr9fAH") else {
+        guard let url = URL(string: "http://localhost:8080/spots") else {
             print("Invalid url...")
             return
         }
@@ -30,7 +30,7 @@ class Api : ObservableObject{
     func postData(newSpot: SpotsData){
         let jsonData = try! JSONEncoder().encode(newSpot)
         let jsonString = String(data: jsonData, encoding: .utf8)!
-        guard let url = URL(string: "https://api.airtable.com/v0/appxT9ln6ixuCb3o1/Surf%20Destinations?api_key=key0U8yesePbr9fAH") else {
+        guard let url = URL(string: "http://localhost:8080/spots") else {
             print("Invalid url...")
             return
         }

@@ -93,7 +93,7 @@ struct FormSpot: View {
                 }
                 .onTapGesture {
                     let diffLevel : Int? = Int(selectedNum)
-                    let newPhoto = Photo(url: "https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg")
+                    let newPhoto = Photo(url: "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg")
                     let newFields = Fields(surfBreak: [sbreak], difficultyLevel: diffLevel, destination: beach, photos : [newPhoto], destinationStateCountry: country)
                     let newRecords =  Record(id: nil, fields: newFields)
                     let newSpot = SpotsData(records: [newRecords])
