@@ -1,12 +1,14 @@
 
 package main
 import (
-    //"fmt"
+    "fmt"
 	"log"
 	"net/http"
+    // "reflect"
     // "database/sql"
-    // "io/ioutil"
+    //  "io/ioutil"
     "encoding/json"
+    "strings"
     // "strconv"
 
 	"github.com/gorilla/mux"
@@ -254,7 +256,7 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 
 //fmt.Fprintf(spots)
 // func createspot(w http.ResponseWriter, r *http.Request) {
-// 	var newspot spot
+// 	var newspot spots
 // 	reqBody, err := ioutil.ReadAll(r.Body)
 // 	if err != nil {
 // 		fmt.Fprintf(w, "Kindly enter data with the spot title and description only in order to update")
@@ -330,7 +332,8 @@ func getAllspots(w http.ResponseWriter, r *http.Request) {
     in := []byte(`{}`)
         var raw map[string]interface{}
         json.Unmarshal(in, &raw)
-    
+
+        var spotsArray []string
     for _, singlespot := range p.Records {
         ListSurfBreak:=singlespot.Fields.SurfBreak[0]
         spotID:=singlespot.ID
@@ -341,11 +344,22 @@ func getAllspots(w http.ResponseWriter, r *http.Request) {
         raw["Surf Break"] = ListSurfBreak
         raw["id"] = spotID
         out, _ := json.Marshal(raw)
-        println(string(out))
+        // str := []string{"Geeks", "For", "Geeks"}
+        // fmt.Println(reflect.TypeOf(out))
+        out2 := string(out)
+        // fmt.Println(reflect.TypeOf(out2))
+
+        spotsArray=append(spotsArray, out2)
+        
+        // println(string(out))
+        // json.NewEncoder(w).Encode(string(out))
         // spotsList:= ListDestinationStateCountry+ " " + ListSurfBreak
         //  fmt.Printf("%v %v", ListDestinationStateCountry, ListSurfBreak)
 			// json.NewEncoder(w).Encode(spotsList)
 	}
+        joinedJson := strings.Join(spotsArray, ",")
+        joinedJson = "{\"records\":[" + joinedJson + "]}"
+        fmt.Fprintf(w, "%v", joinedJson)
     // ListSurfBreak:=p.Records[0].Fields.SurfBreak[0]
     // ListDestinationStateCountry:=p.Records[0].Fields.DestinationStateCountry
     // fmt.Fprintf(w, "%v %v", ListDestinationStateCountry, ListSurfBreak)
