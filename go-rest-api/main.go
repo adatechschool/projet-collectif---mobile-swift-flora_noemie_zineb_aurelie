@@ -52,38 +52,35 @@ func (r *SpotsData) Marshal() ([]byte, error) {
 
 type SpotsData struct {
 	Records []Record `json:"records"`
-	Offset  string   `json:"offset"` 
 }
 
 type Record struct {
-    
 	ID          string `json:"id"`         
-	Fields      Fields `json:"fields"`     
-	CreatedTime string `json:"createdTime"`
+	Fields      Fields `json:"fields"`
 }
 
 type Fields struct {
-	SurfBreak               []string `json:"Surf Break"`               
-	// DifficultyLevel         int64    `json:"Difficulty Level"`         
-	// Destination             string   `json:"Destination"`              
+	SurfBreak               []string `json:"Surf Break, omitempty"`               
+	DifficultyLevel         int64    `json:"Difficulty Level, omitempty"`         
+	Destination             string   `json:"Destination, omitempty"`              
 	// Geocode                 string   `json:"Geocode"`                  
 	// Influencers             []string `json:"Influencers"`              
 	// MagicSeaweedLink        string   `json:"Magic Seaweed Link"`       
-	// Photos                  []Photo  `json:"Photos"`                   
+	Photos                  []Photo  `json:"Photos, omitempty"`                   
 	// PeakSurfSeasonBegins    string   `json:"Peak Surf Season Begins"`  
-	DestinationStateCountry string   `json:"Destination State/Country"`
+	DestinationStateCountry string   `json:"Destination State/Country, omitempty"`
 	// PeakSurfSeasonEnds      string   `json:"Peak Surf Season Ends"`    
 	// Address                 string   `json:"Address"`                  
 }
 
-// type Photo struct {
-// 	ID         string     `json:"id"`        
-// 	URL        string     `json:"url"`       
-// 	Filename   string     `json:"filename"`  
-// 	Size       int64      `json:"size"`      
-// 	Type       string     `json:"type"`      
-// 	Thumbnails Thumbnails `json:"thumbnails"`
-// }
+type Photo struct {
+	// ID         string     `json:"id"`        
+	URL        string     `json:"url"`       
+	// Filename   string     `json:"filename"`  
+	// Size       int64      `json:"size"`      
+	// Type       string     `json:"type"`      
+	// Thumbnails Thumbnails `json:"thumbnails"`
+}
 
 // type Thumbnails struct {
 // 	Small Full `json:"small"`
@@ -305,12 +302,68 @@ var spots = []byte(`
     		]
     }`)
 
+var detailSpot = []byte(`
+{
+    "records": [
+        {
+            "id": "1",
+            "fields": {
+                "Surf Break": [
+                    "Reef Break"
+                ],
+                "Difficulty Level": 4,
+					"Destination": "pipeline street",
+					"Photos": [
+						{
+                            "id":"a",
+							"url": "https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg"
+						}
+					],
+                "Destination State/Country": "Oahu, Hawaii"
+            }
+        },
+        {
+            "id": "2",
+            "fields": {
+                "Surf Break": [
+                    "Point Break"
+                ],
+                "Difficulty Level": 5,
+					"Destination": "Walvis Bay",
+					"Photos": [
+						{
+                            "id":"b",
+							"url": "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg"
+						}
+					],
+                "Destination State/Country": "Namibia"
+        }
+        },
+        {
+            "id": "3",
+            "fields": {
+                "Surf Break": [
+                    "Point Break"
+                ],
+                "Difficulty Level": 2,
+					"Destination": "Tweed Heads",
+					"Photos": [
+						{
+                            "id":"c",
+							"url": "https://dl.airtable.com/I4E4xZeQbO2g814udQDm_jeremy-bishop-80371-unsplash.jpg"
+						}
+					],
+                "Destination State/Country": "Gold Coast, Australia"
+            }
+        }
+    ]
+}`)
 func getOnespot(w http.ResponseWriter, r *http.Request) {
 	spotID := mux.Vars(r)["id"]
     // spotID, err := strconv.Atoi(spotIDS)
     // fmt.Print(spotID)
 
-    rawIn := json.RawMessage(spots)
+    rawIn := json.RawMessage(detailSpot)
     bytes, err := rawIn.MarshalJSON()
     if err != nil {
         panic(err)
@@ -328,20 +381,14 @@ func getOnespot(w http.ResponseWriter, r *http.Request) {
     // fmt.Print()
     
 	for _, singlespot := range p.Records {
+        // oneSpot:=string(singlespot)
 		if singlespot.ID == spotID {
-			json.NewEncoder(w).Encode(singlespot)
+        // fmt.Fprintf(w, oneSpot)
+        
+		json.NewEncoder(w).Encode(singlespot)
 		}
 	}
 }
-
-    
-    type ListData struct {
-        
-        ID          int `json:"id"` 
-        SurfBreak               []string `json:"Surf Break"`                
-        DestinationStateCountry string   `json:"Destination State/Country"`         
-    }
-    
 
 func getAllspots(w http.ResponseWriter, r *http.Request) {
 	//json.NewEncoder(w).Encode(spots)

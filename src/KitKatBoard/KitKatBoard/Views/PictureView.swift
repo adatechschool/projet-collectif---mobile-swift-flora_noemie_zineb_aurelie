@@ -3,7 +3,7 @@
 //  KitKatBoard
 //
 //  Created by Zineb Abdellaoui on 14/12/2021.
-//
+
 
 import SwiftUI
 
@@ -13,7 +13,7 @@ struct PictureView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State var image: Image? = nil
-    
+
     var body: some View {
         VStack(alignment: .center, spacing:3){
                 if (image == nil) {
@@ -30,7 +30,7 @@ struct PictureView: View {
             }
             .onTapGesture {
                 showingImagePicker=true
-                
+
                 //Button("Save", action:save)
             }
             .padding([.horizontal,.bottom])
@@ -40,15 +40,15 @@ struct PictureView: View {
             .sheet(isPresented:$showingImagePicker){
                         ImagePicker(image: $inputImage)
                     }
-        
+
     }
     func loadImage(){
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
-      
+
     }
     func save(){
-        
+
     }
 }
 

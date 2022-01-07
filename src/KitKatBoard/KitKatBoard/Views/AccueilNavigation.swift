@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AccueilNavigation: View {
     @State var spots : SpotsData = SpotsData(records: [])
+//    @State var oneSpot : OneSpotData = OneSpotData(records: [])
+    
     
     var body: some View {
         NavigationView{
@@ -16,8 +18,8 @@ struct AccueilNavigation: View {
             List{
                 ForEach (spots.records){ spot in
                     NavigationLink {
-                        Text("no worries")
-//                        DetailViewLink(spot:spot)
+//                        Text("no worries")
+                        DetailViewLink(spot: nil, spotId: spot.id!)
                     } label: {
                         VStack{
                             let surfBreakJoin: String = spot.fields.surfBreak.joined(separator: ", ")
@@ -34,7 +36,8 @@ struct AccueilNavigation: View {
             }
             .navigationTitle("Best spots in Universe")
             .onAppear(){
-                Api().loadData{(records) in spots = records}
+                Api().loadData{(records) in
+                    spots = records}
                 
             }
            
