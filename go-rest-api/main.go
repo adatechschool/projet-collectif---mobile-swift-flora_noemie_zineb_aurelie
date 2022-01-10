@@ -461,6 +461,14 @@ func getAllspots(w http.ResponseWriter, r *http.Request) {
 // 	// PeakSurfSeasonEnds      string   `json:"Peak Surf Season Ends"`    
 // 	// Address                 string   `json:"Address"`                  
 // }
+// type Photo struct {
+// 	// ID         string     `json:"id"`        
+// 	URL        string     `json:"url"`       
+// 	// Filename   string     `json:"filename"`  
+// 	// Size       int64      `json:"size"`      
+// 	// Type       string     `json:"type"`      
+// 	// Thumbnails Thumbnails `json:"thumbnails"`
+// }
 
 var newSpotPost = allspots{
     SpotsData{ 
@@ -471,7 +479,12 @@ var newSpotPost = allspots{
                     SurfBreak : []string{"X break"},
                     DifficultyLevel : 10,
                     Destination : "Dakhla",
-                    
+                    Photos : []Photo{
+                        Photo{
+                            URL : "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg",
+                        },
+                    },
+                    DestinationStateCountry : "Morocco",
                 },
             }, 
         }, 
