@@ -6,7 +6,7 @@ import (
 	"net/http"
     // "reflect"
     // "database/sql"
-    //  "io/ioutil"
+     "io/ioutil"
     "encoding/json"
     // "strings"
     // "strconv"
@@ -20,7 +20,8 @@ import (
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homeLink)
-    // router.HandleFunc("/spot", createspot).Methods("POST")
+    router.HandleFunc("/spot", createspotList).Methods("POST")
+    // router.HandleFunc("/spot/{id}", createspotView).Methods("POST")
      router.HandleFunc("/spots/{id}", getOnespot).Methods("GET")
     router.HandleFunc("/spots", getAllspots).Methods("GET")
     
@@ -93,9 +94,6 @@ type Photo struct {
 // 	Width  int64  `json:"width"` 
 // 	Height int64  `json:"height"`
 // }
-
-
-
 type allspots []SpotsData
 
 // var spots = []byte(`
@@ -252,23 +250,8 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
  }
 
 //fmt.Fprintf(spots)
-// func createspot(w http.ResponseWriter, r *http.Request) {
-// 	var newspot spots
-// 	reqBody, err := ioutil.ReadAll(r.Body)
-// 	if err != nil {
-// 		fmt.Fprintf(w, "Kindly enter data with the spot title and description only in order to update")
-// 	}
-	
-// 	json.Unmarshal(reqBody, &newspot)
-// 	spots = append(spots, newspot)
-// 	w.WriteHeader(http.StatusCreated)
 
-// 	json.NewEncoder(w).Encode(newspot)
-    
-//     }
-//     // router := mux.NewRouter().StrictSlash(true)
-//     // router.HandleFunc("/spot", createspot)
-//     // log.Fatal(http.ListenAndServe(":8080/spot", router))
+
 var spots = []byte(`
     {
     		"records": [
@@ -459,6 +442,96 @@ func getAllspots(w http.ResponseWriter, r *http.Request) {
     //     DestinationStateCountry string   `json:"Destination State/Country"`                
     // }
 }
+
+
+// type Record struct {
+// 	ID          string `json:"id"`         
+// 	Fields      Fields `json:"fields"`
+// }
+// type Fields struct {
+// 	SurfBreak               []string `json:"Surf Break, omitempty"`               
+// 	DifficultyLevel         int64    `json:"Difficulty Level, omitempty"`         
+// 	Destination             string   `json:"Destination, omitempty"`              
+// 	// Geocode                 string   `json:"Geocode"`                  
+// 	// Influencers             []string `json:"Influencers"`              
+// 	// MagicSeaweedLink        string   `json:"Magic Seaweed Link"`       
+// 	Photos                  []Photo  `json:"Photos, omitempty"`                   
+// 	// PeakSurfSeasonBegins    string   `json:"Peak Surf Season Begins"`  
+// 	DestinationStateCountry string   `json:"Destination State/Country, omitempty"`
+// 	// PeakSurfSeasonEnds      string   `json:"Peak Surf Season Ends"`    
+// 	// Address                 string   `json:"Address"`                  
+// }
+
+var newSpotPost = allspots{
+    SpotsData{ 
+        Records: []Record{ 
+            Record{
+                ID: "4",
+                Fields: Fields{
+                    SurfBreak : []string{"X break"},
+                    DifficultyLevel : 10,
+                    Destination : "Dakhla",
+                },
+            }, 
+        }, 
+    },
+}
+
+
+
+//         "records": [
+//         {
+//             ID: "4",
+//             fields: {
+//                 Surf Break: [
+//                     "Reef Break"
+//                 ],
+//                 Difficulty Level: 4,
+// 					Destination: "pipeline street",
+// 					Photos: [
+// 						{
+//                             id:"a",
+// 							url: "https://dl.airtable.com/ZuXJZ2NnTF40kCdBfTld_thomas-ashlock-64485-unsplash.jpg"
+// 						},
+// 					],
+//                 Destination State/Country: "Oahu, Hawaii"
+//             }
+//         },
+//         ]
+//     },  
+// }
+
+
+
+
+func createspotList(w http.ResponseWriter, r *http.Request) {
+	var newspot SpotsData
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintf(w, "Kindly enter data with the spot title and description only in order to update")
+	}
+	
+	json.Unmarshal(reqBody, &newspot)
+	newSpotPost = append(newSpotPost, newspot)
+	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(newSpotPost)
+    
+}
+// func createspotView(w http.ResponseWriter, r *http.Request) {
+//         var newspot SpotsData
+//         reqBody, err := ioutil.ReadAll(r.Body)
+//         if err != nil {
+//             fmt.Fprintf(w, "Kindly enter data with the spot title and description only in order to update")
+//         }
+        
+//         json.Unmarshal(reqBody, &newspot)
+//         spots = append(spots, newspot)
+//         w.WriteHeader(http.StatusCreated)
+    
+//         json.NewEncoder(w).Encode(newspot)
+        
+// }
 
 // func updatespot(w http.ResponseWriter, r *http.Request) {
 // 	spotID := mux.Vars(r)["id"]
