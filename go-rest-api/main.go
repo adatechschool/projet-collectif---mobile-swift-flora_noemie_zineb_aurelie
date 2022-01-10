@@ -471,6 +471,7 @@ var newSpotPost = allspots{
                     SurfBreak : []string{"X break"},
                     DifficultyLevel : 10,
                     Destination : "Dakhla",
+                    
                 },
             }, 
         }, 
@@ -516,6 +517,8 @@ func createspotList(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 
 	json.NewEncoder(w).Encode(newSpotPost)
+
+    fmt.Printf("%v", newSpotPost)
     
 }
 // func createspotView(w http.ResponseWriter, r *http.Request) {

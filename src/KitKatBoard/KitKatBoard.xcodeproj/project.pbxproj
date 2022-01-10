@@ -27,6 +27,8 @@
 		E5A778CE275F7576008A97F7 /* SpotsData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5A778CD275F7576008A97F7 /* SpotsData.json */; };
 		E5A778D0275F7907008A97F7 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778CF275F7907008A97F7 /* ModelData.swift */; };
 		E5A778D2275FB27A008A97F7 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A778D1275FB27A008A97F7 /* RemoteImage.swift */; };
+		E5FCA151278706080005AE2C /* spotsForList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA150278706080005AE2C /* spotsForList.swift */; };
+		E5FCA15327879A8A0005AE2C /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA15227879A8A0005AE2C /* SpotDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		E5A778CD275F7576008A97F7 /* SpotsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpotsData.json; sourceTree = "<group>"; };
 		E5A778CF275F7907008A97F7 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		E5A778D1275FB27A008A97F7 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
+		E5FCA150278706080005AE2C /* spotsForList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotsForList.swift; sourceTree = "<group>"; };
+		E5FCA15227879A8A0005AE2C /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 			children = (
 				E5A778CD275F7576008A97F7 /* SpotsData.json */,
 				E5A778BE275E5BA9008A97F7 /* SpotsList.swift */,
+				E5FCA15227879A8A0005AE2C /* SpotDetailView.swift */,
+				E5FCA150278706080005AE2C /* spotsForList.swift */,
 				E54FB3B62761032800DEF0FE /* SurfDestination.swift */,
 				E5A778CF275F7907008A97F7 /* ModelData.swift */,
 			);
@@ -316,12 +322,14 @@
 				E54FB3C3276764B500DEF0FE /* WaveImage.swift in Sources */,
 				E5A778C5275F635F008A97F7 /* DetailViewLink.swift in Sources */,
 				E54FB3BD276750C500DEF0FE /* Tabbar.swift in Sources */,
+				E5FCA15327879A8A0005AE2C /* SpotDetailView.swift in Sources */,
 				E5A77893275E4948008A97F7 /* DetailViewHard.swift in Sources */,
 				E54FB3B72761032800DEF0FE /* SurfDestination.swift in Sources */,
 				E5A778D2275FB27A008A97F7 /* RemoteImage.swift in Sources */,
 				E5A77891275E4948008A97F7 /* KitKatBoardApp.swift in Sources */,
 				E5A778BF275E5BA9008A97F7 /* SpotsList.swift in Sources */,
 				E54FB3C72768A07900DEF0FE /* PicturePicker.swift in Sources */,
+				E5FCA151278706080005AE2C /* spotsForList.swift in Sources */,
 				E54FB3C127675EB200DEF0FE /* FormSpot.swift in Sources */,
 				E54FB3B9276213F200DEF0FE /* Map.swift in Sources */,
 				E54FB3C92768A22C00DEF0FE /* PictureView.swift in Sources */,

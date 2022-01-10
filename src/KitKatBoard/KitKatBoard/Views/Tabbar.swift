@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct Tabbar: View {
+    
+    
     var body: some View {
+        
         TabView {
             WaveImage()
                 .tabItem{

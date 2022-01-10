@@ -17,6 +17,7 @@ struct FormSpot: View {
     var choice = ["1","2","3","4","5"]
     @State private var showingAlert = false
     @State private var showingImagePicker = false
+  
     
     var body: some View {
         NavigationView{
@@ -94,10 +95,10 @@ struct FormSpot: View {
                 .onTapGesture {
                     let diffLevel : Int? = Int(selectedNum)
                     let newPhoto = Photo(url: "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg")
-                    let newFields = Fields(surfBreak: [sbreak], difficultyLevel: diffLevel, destination: beach, photos : [newPhoto], destinationStateCountry: country)
-                    let newRecords =  Record(id: nil, fields: newFields)
-                    let newSpot = SpotsData(records: [newRecords])
-                    Api().postData(newSpot: newSpot)
+                    let newFields = Field(surfBreak: [sbreak], difficultyLevel: diffLevel!, destination: beach, photos : [newPhoto], destinationStateCountry: country)
+                    let newRecords =  Records(id: nil, fields: newFields)
+                    let newSpot = OneSpotData(records: [newRecords])
+                    Api().postDataSpot(newSpot: newSpot)
 
                 }
                 .padding()

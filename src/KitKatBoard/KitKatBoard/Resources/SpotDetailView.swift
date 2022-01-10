@@ -14,7 +14,7 @@ struct OneSpotData: Codable {
 
 // MARK: - Record
 struct Records: Codable {
-    let id: String
+    let id: String?
     let fields: Field
 }
 

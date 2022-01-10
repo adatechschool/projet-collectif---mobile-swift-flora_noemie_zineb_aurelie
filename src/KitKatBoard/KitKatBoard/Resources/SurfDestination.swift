@@ -31,7 +31,7 @@ class Api : ObservableObject{
       
     }
 
-    func postData(newSpot: SpotsData){
+    func postData(newSpot: OneSpotData){
         let jsonData = try! JSONEncoder().encode(newSpot)
         let jsonString = String(data: jsonData, encoding: .utf8)!
         guard let url = URL(string: "http://localhost:8080/spots") else {
@@ -82,11 +82,12 @@ class Api : ObservableObject{
     }.resume()
   
 
-
+    }
 func postDataSpot(newSpot: OneSpotData){
+    let trueURl = "http://localhost:8080/spot"
     let jsonData = try! JSONEncoder().encode(newSpot)
     let jsonString = String(data: jsonData, encoding: .utf8)!
-    guard let url = URL(string: "http://localhost:8080/spots{{id}}") else {
+    guard let url = URL(string: trueURl) else {
         print("Invalid url...")
         return
     }
@@ -111,6 +112,6 @@ func postDataSpot(newSpot: OneSpotData){
     task.resume()
 
 }
-}
+
 }
 
