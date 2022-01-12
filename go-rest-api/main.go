@@ -28,14 +28,14 @@ type Record struct {
 }
 type Post struct{
     SurfBreak               []string `json:"Surf Break"`               
-	DifficultyLevel         int64    `json:"Difficulty Level"`         
-	Destination             string   `json:"Destination"`              
-	Photos                  []Photo  `json:"Photos"`                   
+	DifficultyLevel         int64    `json:"Difficulty Level,omitempty"`         
+	Destination             string   `json:"Destination,omitempty"`              
+	Photos                  []Photo  `json:"Photos,omitempty"`                   
 	DestinationStateCountry string   `json:"Destination State/Country"`
 
 }
 type Photo struct {
-	Urlphoto        string     `json:"url"`       
+	Urlphoto        string     `json:"url,omitempty"`       
 }
 
 var db *sql.DB
@@ -52,7 +52,7 @@ func main() {
 	// router.HandleFunc("/", homeLink)
     // router.HandleFunc("/spot", createspotList).Methods("POST")
     // router.HandleFunc("/spot/{id}", createspotView).Methods("POST")
-    // router.HandleFunc("/spots/{id}", getOnespot).Methods("GET")
+    router.HandleFunc("/spots/{id}", getOnespot).Methods("GET")
     router.HandleFunc("/spots", getAllspots).Methods("GET")
     
     // router.HandleFunc("/spots/{id}", updatespot).Methods("PATCH")
@@ -67,28 +67,59 @@ func main() {
 func getAllspots(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     var records []Record
-    result, err := db.Query("SELECT id, surfbreak,  difficultylevel, destination, urlphoto, destinationstatecountry FROM spots")
+    result, err := db.Query("SELECT id, surfbreak, destinationstatecountry FROM spots")
     if err != nil {
         panic(err.Error())
     }
     defer result.Close()
+    var surfBreak string
+    var record Record
     for result.Next() {
-        var record Record
-        var surfBreak string
-        var urlphoto Photo
-        err := result.Scan(&record.ID, &surfBreak, &record.Post.DifficultyLevel, &record.Post.Destination , &urlphoto.Urlphoto, &record.Post.DestinationStateCountry)
+        
+        // var urlphoto Photo
+        err := result.Scan(&record.ID, &surfBreak, &record.Post.DestinationStateCountry)
         convertSurfBreakToArray := strings.Split(surfBreak, ",")
         if err != nil {
         panic(err.Error())
         }
         record.Post.SurfBreak = convertSurfBreakToArray
-        var picturesArray []Photo
-        picturesArray = append(picturesArray, urlphoto)
-        record.Post.Photos = picturesArray
+        // var picturesArray []Photo
+        // picturesArray = append(picturesArray, urlphoto)
         records = append(records, record)
     }
         var spotdata SpotsData
+        
         spotdata.Records = records
+
     json.NewEncoder(w).Encode(spotdata)
 }
 
+func getOnespot(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    var records []Record
+    params := mux.Vars(r)
+    result, err := db.Query("SELECT id, surfbreak,  difficultylevel, destination, urlphoto, destinationstatecountry FROM spots WHERE id = ?", params["id"])
+    if err != nil {
+      panic(err.Error())
+    }
+    defer result.Close()
+    var record Record
+    var surfBreak string
+    var urlphoto Photo
+    for result.Next() {
+        err := result.Scan(&record.ID, &surfBreak, &record.Post.DifficultyLevel, &record.Post.Destination , &urlphoto.Urlphoto, &record.Post.DestinationStateCountry)
+        if err != nil {
+            panic(err.Error())
+        }
+    }
+    convertSurfBreakToArray := strings.Split(surfBreak, ",")
+    record.Post.SurfBreak = convertSurfBreakToArray
+    var picturesArray []Photo
+    picturesArray = append(picturesArray, urlphoto)
+    record.Post.Photos = picturesArray
+    records = append(records, record)
+    var spotdata SpotsData
+    spotdata.Records = records
+    json.NewEncoder(w).Encode(spotdata)
+}
+    
