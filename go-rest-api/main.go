@@ -1,13 +1,13 @@
 
 package main
 import (
-    // "fmt"
+    "fmt"
 	"log"
     "strings"
 	"net/http"
     // "reflect"
     "database/sql"
-    // "io/ioutil"
+    "io/ioutil"
     "encoding/json"
     // "strings"
     // "strconv" 
@@ -28,7 +28,7 @@ type Record struct {
 }
 type Post struct{
     SurfBreak               []string `json:"Surf Break"`               
-	DifficultyLevel         int64    `json:"Difficulty Level,omitempty"`         
+	DifficultyLevel         int    `json:"Difficulty Level,omitempty"`         
 	Destination             string   `json:"Destination,omitempty"`              
 	Photos                  []Photo  `json:"Photos,omitempty"`                   
 	DestinationStateCountry string   `json:"Destination State/Country"`
@@ -50,10 +50,10 @@ func main() {
 	// router := mux.NewRouter().StrictSlash(true)
     router := mux.NewRouter()
 	// router.HandleFunc("/", homeLink)
-    // router.HandleFunc("/spot", createspotList).Methods("POST")
+    router.HandleFunc("/spot", createspotList).Methods("POST")
     // router.HandleFunc("/spot/{id}", createspotView).Methods("POST")
-    router.HandleFunc("/spots/{id}", getOnespot).Methods("GET")
     router.HandleFunc("/spots", getAllspots).Methods("GET")
+    // router.HandleFunc("/spots", getAllspots).Methods("GET")
     
     // router.HandleFunc("/spots/{id}", updatespot).Methods("PATCH")
     // router.HandleFunc("/spots/{id}", deletespot).Methods("DELETE")
@@ -67,30 +67,28 @@ func main() {
 func getAllspots(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     var records []Record
-    result, err := db.Query("SELECT id, surfbreak, destinationstatecountry FROM spots")
+    result, err := db.Query("SELECT id, surfbreak,  difficultylevel, destination, urlphoto, destinationstatecountry FROM spots")
     if err != nil {
         panic(err.Error())
     }
     defer result.Close()
-    var surfBreak string
-    var record Record
     for result.Next() {
-        
-        // var urlphoto Photo
-        err := result.Scan(&record.ID, &surfBreak, &record.Post.DestinationStateCountry)
+        var record Record
+        var surfBreak string
+        var urlphoto Photo
+        err := result.Scan(&record.ID, &surfBreak, &record.Post.DifficultyLevel, &record.Post.Destination , &urlphoto.Urlphoto, &record.Post.DestinationStateCountry)
         convertSurfBreakToArray := strings.Split(surfBreak, ",")
         if err != nil {
         panic(err.Error())
         }
         record.Post.SurfBreak = convertSurfBreakToArray
-        // var picturesArray []Photo
-        // picturesArray = append(picturesArray, urlphoto)
+        var picturesArray []Photo
+        picturesArray = append(picturesArray, urlphoto)
+        record.Post.Photos = picturesArray
         records = append(records, record)
     }
         var spotdata SpotsData
-        
         spotdata.Records = records
-
     json.NewEncoder(w).Encode(spotdata)
 }
 
@@ -121,5 +119,31 @@ func getOnespot(w http.ResponseWriter, r *http.Request) {
     var spotdata SpotsData
     spotdata.Records = records
     json.NewEncoder(w).Encode(spotdata)
+}
+
+func createspotList(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "New post was created")
+
+    stmt, err := db.Prepare("INSERT INTO spots(surfbreak,  difficultylevel, destination, urlphoto, destinationstatecountry) VALUES(?, ?, ?, ?, ?)")
+        if err != nil {
+        panic(err.Error())
+        }
+    body, err := ioutil.ReadAll(r.Body)
+        if err != nil {
+        panic(err.Error())
+        }
+    keyVal := make(map[string]string)
+    json.Unmarshal(body, &keyVal)
+    surfbreak := keyVal["surfbreak"]
+    difficultylevel := keyVal["difficultylevel"]
+    // difficultylevel,_ = strconv.Atoi(difficultylevel)
+    destination := keyVal["destination"]
+    urlphoto := keyVal["urlphoto"]
+    destinationstatecountry := keyVal["destinationstatecountry"]
+    _, err = stmt.Exec(surfbreak, difficultylevel, destination, urlphoto, destinationstatecountry)
+        if err != nil {
+        panic(err.Error())
+        }
+    fmt.Fprintf(w, "New spot was created")
 }
     

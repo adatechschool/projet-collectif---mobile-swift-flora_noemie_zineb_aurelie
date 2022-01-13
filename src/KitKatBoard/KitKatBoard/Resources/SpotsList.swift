@@ -45,28 +45,28 @@ struct Fields: Codable {
    // var id: UUID=UUID()
 
     let surfBreak: [String]
-//    let difficultyLevel: Int?
-//    let destination: String
-//    let photos: [Photo]
+    let difficultyLevel: Int?
+    let destination: String?
+    let photos: [Photo]
     let destinationStateCountry : String
 //    let address: String
 
     enum CodingKeys: String, CodingKey {
         case surfBreak = "Surf Break"
-//        case difficultyLevel = "Difficulty Level"
-//        case destination = "Destination"
-//        case photos = "Photos"
+        case difficultyLevel = "Difficulty Level"
+        case destination = "Destination"
+        case photos = "Photos"
         case destinationStateCountry = "Destination State/Country"
 //        case address = "Address"
     }
 }
 //
 //// MARK: - Photo
-//struct Photo: Codable {
-//    //var id: String?
-//    let url: String
-////    let thumbnails: Thumbnails
-//}
+struct Photo: Codable {
+    //var id: String?
+    let url: String
+//    let thumbnails: Thumbnails
+}
 //
 //////// MARK: - Thumbnails
 ////struct Thumbnails: Codable {

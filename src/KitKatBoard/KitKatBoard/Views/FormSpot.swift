@@ -72,17 +72,16 @@ struct FormSpot: View {
                 
                 Spacer()
             }
-            Button(action: {showingAlert = true}){
+            let newPhoto = "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg"
+            let newSpot = SpotsPostData(surfbreak: sbreak, difficultylevel: selectedNum, destination: beach, urlphoto: newPhoto, destinationstatecountry: country)
+            Button(action: {
+                showingAlert = true
+            }){
                 HStack {
                     Spacer()
                     Text("Save")
                     Spacer()
                 }
-               
-                
-
-                //print(newSpot)
-            }
                 .foregroundColor(.white)
                 .padding(10)
                 .background(Color.accentColor)
@@ -90,18 +89,19 @@ struct FormSpot: View {
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Form submitted"),
                     dismissButton: .default(Text("OK")))
-
                 }
-                .onTapGesture {
-                    let diffLevel : Int? = Int(selectedNum)
-                    let newPhoto = Photo(url: "https://dl.airtable.com/YzqA020RRLaTyAZAta9g_brandon-compagne-308937-unsplash.jpg")
-                    let newFields = Field(surfBreak: [sbreak], difficultyLevel: diffLevel!, destination: beach, photos : [newPhoto], destinationStateCountry: country)
-                    let newRecords =  Records(id: nil, fields: newFields)
-                    let newSpot = OneSpotData(records: [newRecords])
-                    Api().postDataSpot(newSpot: newSpot)
-
-                }
+            }
+            .onTapGesture {
+                Api().postData(newSpot: newSpot)
+            }
                 .padding()
+               
+                
+
+                //print(newSpot)
+            
+                
+                
 
             
         }
